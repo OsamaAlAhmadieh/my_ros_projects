@@ -1,10 +1,11 @@
 <launch>
 
-	<env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find move_and_perceive)/models"/>
-
 	<param name='robot_description' textfile='$(find my_robot)/robot_model/urdf/my_robot_model.urdf'/>
 	<node name='spawn_urdf' pkg='gazebo_ros' type='spawn_model'
-        args='-param robot_description -urdf -model my_robot_model'/>
+        args='-param robot_description -urdf -model my_robot_model -z 0.2'/>
+
+	<env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find move_and_perceive)/models"/>
+
     <node name='robot_state_publisher' pkg='robot_state_publisher'
         type='robot_state_publisher'/>
 

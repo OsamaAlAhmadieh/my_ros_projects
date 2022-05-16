@@ -9,7 +9,7 @@ import numpy as np
 class Follower:
 
     def __init__(self):
-        self.image_sub = rospy.Subscriber('/camera/rgb/image_raw', Image, self.image_cb)
+        self.image_sub = rospy.Subscriber('/robot/camera1/image_raw', Image, self.image_cb)
         cv2.namedWindow('window1', 1)
         self.bridge = cv_bridge.CvBridge()
         self.thersholds = {'lower_yellow': np.array([10, 10, 10]), 
@@ -58,7 +58,6 @@ class Follower:
     def run_controller(self, cx, w):
         self.twist.linear.x = 0.5
         err = cx - w/2
-        print('correcting error')
         self.twist.angular.z = -self.Kp * err
         self.cmd_vel_pub.publish(self.twist)
 
