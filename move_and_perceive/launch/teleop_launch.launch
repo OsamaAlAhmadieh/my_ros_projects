@@ -1,0 +1,7 @@
+<launch>
+
+	<node pkg='move_and_perceive' name='key_publisher_rem' type='key_publisher_rem.py'
+		launch-prefix='gnome-terminal --command'/>
+	<node pkg='move_and_perceive' name='keys_to_twist_with_ramp' type='keys_to_twist_with_ramps.py'/>
+
+</launch>
